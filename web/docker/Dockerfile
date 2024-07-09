@@ -35,7 +35,7 @@ RUN mkdir -p ${WORK_DIR}
 COPY --from=build /app/build ${WORK_DIR}/
 
 # Copy custom nginx configuration file
-COPY /app/docker/nginx.conf /etc/nginx/nginx.conf
+COPY --from=build /app/docker/nginx.conf /etc/nginx/nginx.conf
 
 # Set permissions
 RUN touch /var/run/nginx.pid
