@@ -26,7 +26,7 @@ FROM nginx:1.21.0-alpine
 RUN rm -rf /usr/share/nginx/html/*
 
 # Environment variable for work directory
-ENV WORK_DIR=/usr/share/nginx/html/hp-udd-upyogfront
+ENV WORK_DIR=/var/web/hpfrontend
 
 # Create the work directory
 RUN mkdir -p ${WORK_DIR}
@@ -35,7 +35,7 @@ RUN mkdir -p ${WORK_DIR}
 COPY --from=build /app/build ${WORK_DIR}/
 
 # Copy custom nginx configuration file
-COPY --from=build /app/docker/nginx.conf /etc/nginx/nginx.conf
+COPY --from=build /app/docker/nginx.conf /etc/nginx/conf.d/default.conf
 
 # Set permissions
 RUN touch /var/run/nginx.pid
@@ -44,5 +44,3 @@ RUN chown -R nginx:nginx /var/run/nginx.pid ${WORK_DIR} /var/cache/nginx /var/lo
 # Expose port 80 to the outside world
 EXPOSE 80
 
-# Start nginx
-CMD ["nginx", "-g", "daemon off;"]
