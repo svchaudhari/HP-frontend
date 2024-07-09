@@ -12,5 +12,5 @@ config:
 -   name: builds/upyog-main
     build:
     - work-dir: frontend/upyogfront/
-      dockerfile: /upyog-main/Dockerfile
+      dockerfile: web/docker/Dockerfile
       image-name: upyogfront
