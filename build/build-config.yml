@@ -7,10 +7,10 @@
 #       image-name: < Docker image name  >
 # -
 # -
-
+#######################
 config:
 -   name: builds/upyog-main
     build:
     - work-dir: frontend/upyogfront/
-      dockerfile: Dockerfile
+      dockerfile: web/docker/Dockerfile
       image-name: upyogfront
